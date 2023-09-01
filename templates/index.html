@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do List App</title>
-    <link rel="stylesheet" href="../static/styles.css">
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>To-Do List App</title>
+      <link rel="stylesheet" href="../static/styles.css">
   </head>
   <body>
-    <div class="container">
+
+    <div class="title">
+      <img src="../static/icons/LOGO.png" alt="TDL" class="logo">
       <h1>To-Do List</h1>
-      <input id="new-task" type="text" placeholder="Enter a new task">
-      <button id="add-task-btn">Add Task</button>
-      <ul id="task-list"></ul>
+      <h4>*This is a demo live session of our app, Log in to save your tasks</h4>
+    </div>
+
+    <div class="signIn">
+      <p class="login">Log In</p>
+      <p class="signup">Sign Up</p>
+    </div>
+
+    <div class="container">
+        <div class="input-container">
+            <input id="new-task" type="text" placeholder="Enter a new task">
+            <img id="add-task-btn" src="../static/icons/add.png" alt="Add Task">
+        </div>
+        <ul id="task-list"></ul>
     </div>
     <script src="../static/script.js"></script>
   </body>

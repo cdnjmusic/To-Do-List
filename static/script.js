@@ -7,29 +7,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Add a keydown event listener to the input field
   newTaskInput.addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
-      addTask();
-    }
+      if (event.key === "Enter") {
+          addTask();
+      }
   });
 
   function addTask() {
-    const taskText = newTaskInput.value;
-    if (taskText.trim() !== "") {
-      const taskItem = document.createElement("li");
-      taskItem.innerHTML = `
-        <span>${taskText}</span>
-        <button class="delete-btn">Delete</button>
-      `;
-      taskList.appendChild(taskItem);
-      newTaskInput.value = "";
-      attachDeleteEvent(taskItem);
-    }
+      const taskText = newTaskInput.value;
+      if (taskText.trim() !== "") {
+          const taskItem = document.createElement("li");
+          taskItem.innerHTML = `
+              <span>${taskText}</span>
+              <img class="delete-btn" src="../static/icons/delete.png" alt="Delete Task">
+          `;
+          taskList.appendChild(taskItem);
+          newTaskInput.value = "";
+          attachDeleteEvent(taskItem);
+      }
   }
 
   function attachDeleteEvent(taskItem) {
-    const deleteButton = taskItem.querySelector(".delete-btn");
-    deleteButton.addEventListener("click", function () {
-      taskList.removeChild(taskItem);
-    });
+      const deleteButton = taskItem.querySelector(".delete-btn");
+      deleteButton.addEventListener("click", function () {
+          taskList.removeChild(taskItem);
+      });
   }
 });
