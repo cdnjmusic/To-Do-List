@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>僕のTo-Do List Dashboard</title>
+      <link rel="icon" href="../static/icons/LOGO.ico" type="image/x-icon">
+      <link rel="stylesheet" href="../static/styles.css">
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    
+    <div class="header">
+      <div class="title">
+        <img src="../static/icons/LOGO.png" alt="TDL" class="logo">
+        <h1 class="nameof"><a href="./index.html" class="anameof">僕のTo-Do List</a></h1>
+        <h4 class="demo">You have successfully logged in | Your tasks have been saved</h4>
+      </div>
+      <div class="signIn">
+        <!-- <a href="{{url_for('login')}}" class="login">Log In</a> -->
+        <a href="{{url_for('logout')}}" class="signup">Log Out</a>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="input-container">
+            <input id="new-task" type="text" placeholder="Enter a new task">
+            <img id="add-task-btn" src="../static/icons/add.png" alt="Add Task">
+        </div>
+        <ul id="task-list"></ul>
+    </div>
+
+    <script src="../static/script.js"></script>
+  </body>
+</html>
