@@ -1,58 +1,208 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
+  background-image: url("icons/bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  /* Add some transition for focus effect */
+  transition: all 0.3s ease-in-out;
+}
+
+.header {
+  width: 100%;
+  height: auto;
+}
+
+.title {
+  float: left;
+  margin-left: 4%;
+  margin-top: 4%;
+}
+
+.logo {
+  width: 10%;
+  height: 10%;
+}
+
+.nameof {
+  display: inline-block;
+  padding-left: 4%;
+  -webkit-text-fill-color: aliceblue;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  font-weight: 900;
+  font-size: 3rem;
+}
+
+.anameof {
+  text-decoration: none;
+}
+
+.demo {
+  font-weight: 400;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  -webkit-text-fill-color: aliceblue;
+}
+
+.signIn {
+  float: right;
+  margin-right: 4%;
+  margin-top: 4%;
+  -webkit-text-fill-color: black;
+  width: 20%;
+  text-align: right;
+}
+
+.login {
+  display: inline-block;
+  margin-right: 7%;
+  text-decoration: none;
+  /* Add some transition for focus effect */
+  transition: all 0.5s ease-in-out;
+}
+
+.login:hover {
+  text-decoration: overline;
+  -webkit-text-fill-color: #008cff;
+  font-size: 1.05em;
+}
+
+.signup {
+  display: inline-block;
+  padding: 5% 10%;
+  text-decoration: none;
+  border: 2px solid black;
+  border-radius: 10px / 10px;
+  /* Add some transition for focus effect */
+  transition: all 0.5s ease-in-out;
+}
+
+.signup:hover {
+  background-color: rgb(255, 255, 255);
+  -webkit-text-fill-color: white;
+  font-weight: bold;
+  border: 2px solid white;
+  /* Add the animation */
+  animation: animate-rgb 5s linear infinite;
+}
+
+/* RGB Animation */
+@keyframes animate-rgb {
+  0% {
+    background-color: rgb(179, 179, 179);
+  }
+  25% {
+    background-color: rgb(255, 182, 172);
+  }
+  50% {
+    background-color: rgb(207, 171, 255);
+  }
+  75% {
+    background-color: rgb(241, 255, 164);
+  }
+  100% {
+    background-color: rgb(171, 228, 255);
+  }
 }
 
 .container {
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: block;
+  clear: both;
+  margin-left: 4%;
+  margin-right: 4%;
+  margin-bottom: 4%;
+  padding-top: 4%;
 }
 
-h1 {
-  text-align: center;
+.input-container {
+  display: flex;
+}
+
+#new-task{
+  margin: 0;
+  padding: 0;
+  border-radius: 15px;
+  border-color: aliceblue;
+  width: 91.5%;
+  padding: 1%;
+  height: 2%;
+  margin-right: 2.5%;
+}
+
+input[type="text"] {
+    font-size: 16px;
+    /* Add some transition for focus effect */
+    transition: all 0.5s ease-in-out;
+}
+
+/* Change the style on focus */
+input[type="text"]:focus {
+  outline: none;
+  opacity: 50%;
+}
+
+#add-task-btn {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 4%;
+  opacity: 60%;
+  /* Add some transition for focus effect */
+  transition: all 0.5s ease-in-out;
+}
+
+#add-task-btn:hover {
+  opacity: 100%;
+  cursor: pointer;
 }
 
 ul {
-  list-style: none;
+  list-style-type: none;
+  display: block;
+  clear: both;
+  margin-top: 4%;
+  margin-bottom: 4%;
   padding: 0;
 }
 
 li {
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  margin-bottom: 1%;
 }
 
-input[type="text"] {
-  padding: 10px;
-  width: 70%;
+.extended-entry {
+  margin: 0;
+  padding: 0;
+  background-color: aliceblue;
+  background-blend-mode: soft-light;
+  width: 91.5%;
+  padding: 1%;
+  height: 2%;
+  margin-right: 2.5%;
+  border-radius: 15px;
+  opacity: 50%;
+  /* Add some transition for focus effect */
+  transition: all 0.5s ease-in-out;
 }
 
-button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  transition: background-color 0.3s;
+.extended-entry:hover {
+  opacity: 80%;
 }
 
-button:hover {
-  background-color: #0056b3;
-}
-
-#add-task-btn:hover {
-  cursor: pointer;
+.delete-btn {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 4%;
+  opacity: 50%;
+  /* Add some transition for focus effect */
+  transition: all 0.5s ease-in-out;
 }
 
 .delete-btn:hover {
   cursor: pointer;
+  opacity: 100%;
 }

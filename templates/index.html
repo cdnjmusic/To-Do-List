@@ -5,18 +5,20 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>To-Do List App</title>
       <link rel="stylesheet" href="../static/styles.css">
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   </head>
   <body>
-
-    <div class="title">
-      <img src="../static/icons/LOGO.png" alt="TDL" class="logo">
-      <h1>To-Do List</h1>
-      <h4>*This is a demo live session of our app, Log in to save your tasks</h4>
-    </div>
-
-    <div class="signIn">
-      <a href="{{url_for('login')}}" class="login">Log In</a>
-      <a href="{{url_for('register')}}" class="signup">Sign Up</a>
+    
+    <div class="header">
+      <div class="title">
+        <img src="../static/icons/LOGO.png" alt="TDL" class="logo">
+        <h1 class="nameof"><a href="#" class="anameof">To-Do List</a></h1>
+        <h4 class="demo">*This is a demo live session of our app, Log in to save your tasks</h4>
+      </div>
+      <div class="signIn">
+        <a href="{{url_for('login')}}" class="login">Log In</a>
+        <a href="{{url_for('register')}}" class="signup">Sign Up</a>
+      </div>
     </div>
 
     <div class="container">
@@ -26,6 +28,7 @@
         </div>
         <ul id="task-list"></ul>
     </div>
+
     <script src="../static/script.js"></script>
   </body>
 </html>

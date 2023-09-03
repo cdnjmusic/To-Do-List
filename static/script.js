@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (taskText.trim() !== "") {
           const taskItem = document.createElement("li");
           taskItem.innerHTML = `
-              <span>${taskText}</span>
+              <span class="extended-entry">${taskText}</span>
               <img class="delete-btn" src="../static/icons/delete.png" alt="Delete Task">
           `;
           taskList.appendChild(taskItem);
