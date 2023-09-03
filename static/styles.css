@@ -67,7 +67,6 @@ body {
 .login:hover {
   text-decoration: overline;
   -webkit-text-fill-color: #008cff;
-  font-size: 1.05em;
 }
 
 .signup {
