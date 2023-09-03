@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, redirect
+from flask import Flask, render_template, url_for, redirect, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from flask_wtf import FlaskForm
@@ -7,6 +7,7 @@ from wtforms.validators import InputRequired, Length, ValidationError
 from flask_bcrypt import Bcrypt
 
 app = Flask(__name__)
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SECRET_KEY'] = 'thisisasecretkey'
 db = SQLAlchemy(app)
@@ -20,10 +21,17 @@ login_manager.login_view = "login"
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+# Task sync commit
+class Task(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    description = db.Column(db.String(100), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), nullable=False, unique=True)
     password = db.Column(db.String(80), nullable=False)
+    tasks = db.relationship('Task', backref='user', lazy=True)
 
 class RegisterForm(FlaskForm):
     username = StringField(validators=[InputRequired(), Length(
@@ -68,10 +76,31 @@ def login():
     
     return render_template('login.html', form=form)
 
+# Task sync commit
 @app.route('/dashboard', methods=['GET', 'POST'])
 @login_required
 def dashboard():
-    return render_template('dashboard.html')
+    user_tasks = current_user.tasks.all()  # Retrieve tasks for the current user
+    return render_template('dashboard.html', user_tasks=user_tasks)
+
+@app.route('/add_task', methods=['POST'])
+@login_required
+def add_task():
+    task_description = request.form.get('task_description')
+    if task_description:
+        new_task = Task(description=task_description, user_id=current_user.id)
+        db.session.add(new_task)
+        db.session.commit()
+    return redirect(url_for('dashboard'))
+
+@app.route('/delete_task/<int:task_id>', methods=['POST'])
+@login_required
+def delete_task(task_id):
+    task_to_delete = Task.query.get(task_id)
+    if task_to_delete:
+        db.session.delete(task_to_delete)
+        db.session.commit()
+    return redirect(url_for('dashboard'))
 
 @app.route('/logout', methods=['GET', 'POST'])
 @login_required
@@ -93,4 +122,5 @@ def register():
     return render_template('register.html', form=form)
 
 if __name__ == "__main__":
+    app.run(extra_files=['static/signin.css'])
     app.run(debug=True)

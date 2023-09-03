@@ -4,17 +4,29 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Register</title>
+        <link rel="icon" href="../static/icons/LOGO.ico" type="image/x-icon">
+        <link rel="stylesheet" href="../static/signin.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     </head>
     <body>
-        <h1>Register Page</h1>
+        <h1 class="title">Hi There!</h1>
 
         <form action="" method="POST" class="loginForm">
             {{ form.hidden_tag() }}
-            {{ form.username }}
-            {{ form.password }}
-            {{ form.submit }}
+            
+            <div class="form-group">
+                <label for="username">Username</label>
+                {{ form.username(class="form-control", placeholder="Enter your username") }}
+            </div>
+        
+            <div class="form-group">
+                <label for="password">Password</label>
+                {{ form.password(class="form-control", placeholder="Enter your password") }}
+            </div>
+        
+            {{ form.submit(class="btn btn-primary") }}
         </form>
         
-        <a href="{{url_for('login')}}" class="login">Already have an account? Log In</a>
+        <a href="{{url_for('login')}}" class="signup">Already have an account? Log In</a>
     </body>
 </html>

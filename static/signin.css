@@ -1,0 +1,119 @@
+/* Center the entire body vertically and horizontally */
+body {
+  display: flex;
+  flex-direction: column; /* Place everything in a single vertical flex column */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url("icons/bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Style for form container */
+.loginForm {
+  max-width: 300px;
+  width: calc(100% - 2%);
+  margin: 0 auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column; /* Display form elements in a single column */
+  align-items: center; /* Center form elements horizontally */
+}
+
+/* Style for form labels */
+.form-group label {
+  font-weight: light;
+  margin-bottom: 5px; /* Add spacing between labels and inputs */
+}
+
+/* Style for form input fields */
+.form-group input {
+  flex: 1; /* Make the input fields fill the available space vertically */
+  width: calc(100% - 20px); /* Fill the available space horizontally with 20px spacing on both sides */
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  font-size: 16px;
+}
+
+/* Style for submit button */
+.btn {
+  width: 100%; /* Fill the available space horizontally */
+  padding: 10px;
+  background-color: #1b1b1b;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center; /* Center the button text */
+  text-decoration: none;
+  margin-top: 10px; /* Add some spacing between the inputs and the button */
+	transition: all 0.5s ease-in-out;
+}
+
+.btn:hover {
+  background-color: rgb(255, 255, 255);
+  -webkit-text-fill-color: rgb(34, 34, 34);
+  font-weight: bold;
+  border: 2px solid rgb(34, 34, 34);
+  /* Add the animation */
+  animation: animate-rgb 5s linear infinite;
+}
+
+/* RGB Animation */
+@keyframes animate-rgb {
+  0% {
+    background-color: rgb(179, 179, 179);
+  }
+  25% {
+    background-color: rgb(255, 182, 172);
+  }
+  50% {
+    background-color: rgb(207, 171, 255);
+  }
+  75% {
+    background-color: rgb(241, 255, 164);
+  }
+  100% {
+    background-color: rgb(171, 228, 255);
+  }
+}
+
+/* Style for .title */
+.title {
+  -webkit-text-fill-color: aliceblue;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  font-weight: 900;
+  font-size: 2rem;
+  text-align: center; /* Center the title text */
+	margin-bottom: 3%;
+}
+
+/* Style for .signup */
+.signup {
+  text-decoration: none;
+  -webkit-text-fill-color: aliceblue;
+  margin-block-start: 0;
+  margin-block-end: 0;
+	margin-top: 1%;
+  text-align: center; /* Center the signup text */
+  transition: all 0.5s ease-in-out;
+}
+
+.signup:hover {
+  text-decoration: underline;
+	-webkit-text-fill-color: rgb(0, 39, 61);
+}
