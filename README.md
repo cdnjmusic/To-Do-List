@@ -2,6 +2,7 @@
 # "僕のTo Do List" - Flask Dynamic Database App 🔰
 
 **App Link:** [ Static Live Demo ] http://cdnjmusic.pythonanywhere.com/
+
 *Not Recommended, check Installation and Usage to run the Dynamic application*
 
 ## Introduction 🍜
