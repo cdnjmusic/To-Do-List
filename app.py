@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, redirect, request
+from flask import Flask, render_template, url_for, redirect, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from flask_wtf import FlaskForm
@@ -80,17 +80,27 @@ def login():
 @app.route('/dashboard', methods=['GET', 'POST'])
 @login_required
 def dashboard():
-    user_tasks = current_user.tasks.all()  # Retrieve tasks for the current user
+    user_tasks = current_user.tasks  # Retrieve tasks for the current user
     return render_template('dashboard.html', user_tasks=user_tasks)
+
+@app.route('/load_tasks', methods=['GET'])
+@login_required
+def load_tasks():
+    user_tasks = current_user.tasks
+    tasks = [{'id': task.id, 'description': task.description} for task in user_tasks]
+    print(f"Loaded tasks from database: {tasks}")
+    return jsonify({'success': True, 'tasks': tasks})
 
 @app.route('/add_task', methods=['POST'])
 @login_required
 def add_task():
     task_description = request.form.get('task_description')
+    print(f"Received task description: {task_description}")
     if task_description:
         new_task = Task(description=task_description, user_id=current_user.id)
         db.session.add(new_task)
         db.session.commit()
+        print(f"Added new task to database: {new_task}")
     return redirect(url_for('dashboard'))
 
 @app.route('/delete_task/<int:task_id>', methods=['POST'])
@@ -98,8 +108,11 @@ def add_task():
 def delete_task(task_id):
     task_to_delete = Task.query.get(task_id)
     if task_to_delete:
+        print(f"Deleting task with ID {task_id} from the database")
         db.session.delete(task_to_delete)
         db.session.commit()
+    else:
+        print(f"Task with ID {task_id} not found in the database")
     return redirect(url_for('dashboard'))
 
 @app.route('/logout', methods=['GET', 'POST'])
@@ -122,5 +135,4 @@ def register():
     return render_template('register.html', form=form)
 
 if __name__ == "__main__":
-    app.run(extra_files=['static/signin.css'])
     app.run(debug=True)
