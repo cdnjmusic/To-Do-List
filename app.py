@@ -10,6 +10,7 @@ app = Flask(__name__)
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SECRET_KEY'] = 'thisisasecretkey'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # Creates overhead so better to remove it
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 
